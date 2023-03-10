@@ -1,0 +1,225 @@
+# profile refrence
+export BASH_PROFILE_LOCATION=~/.bash_profile
+export ZSH_PROFILE_LOCATION=~/.zshrc
+export LOCAL_PROFILE_LOCATION=~/Tools/shell-profile-tool/profilecomponents/
+
+# load brew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# set text editor - vscode
+export EDITOR=code
+export VISUAL="$EDITOR" 
+
+# link homebrew bash
+export PATH="/usr/local/bin:$PATH"
+
+# quality of life commands
+alias reloadProfile="source $PROFILE_LOCATION"
+alias editProfile="code $LOCAL_PROFILE_LOCATION/profile-template"
+alias editLocalProfile="code $LOCAL_PROFILE_LOCATION/local-profile"
+alias shortcuts='touch ~/Tools/shortcuts.txt && open ~/Tools/shortcuts.txt'
+alias scratchText='touch  ~/Tools/scratch.txt && open ~/Tools/scratch.txt'
+alias scratchScript='touch  ~/Tools/scratch.sh && open ~/Tools/scratch.sh'
+alias getPath='echo "$PATH"'
+alias getLocation='echo "$PWD"'
+
+function sortUnique() {
+    sort -u $1
+}
+
+function normalizeFile() {
+    cat $1 | sort -u > $2
+}
+
+function regenerateProfile() {
+    curDir=$(echo $PWD)
+    cd ~/Tools
+    ./shell-profile-tool/generateProfiles.sh
+    reloadProfile
+    cd $curDir
+}
+
+function newAlias () {
+    echo "alias $1='$2'" >> $LOCAL_PROFILE_LOCATION
+    echo "alias $1='$2'" >> $ZSH_PROFILE_LOCATION && reloadProfile
+    echo "alias $1='$2'" >> $BASH_PROFILE_LOCATION && reloadProfile
+    
+}
+
+# one time setup:
+function downloadJava11() {
+    brew install openjdk@11
+    sudo ln -sfn /opt/homebrew/opt/openjdk@11/libexec/openjdk.jdk \
+        /Library/Java/JavaVirtualMachines/openjdk-11.jdk
+}
+
+function configureCodeAsDefault() {
+    cd ~/Library/Preferences/com.apple.LaunchServices
+    appIdentifier=$(/usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' /Applications/Visual\ Studio\ Code.app/Contents/Info.plist)
+    # open com.apple.launchservices.secure.plist < with xcode
+    #LSHanderRoleAll=$appidentifier.
+}
+
+# Shell Implementations
+alias toZsh="chsh -s /bin/zsh && export PROFILE_LOCATION=$ZSH_PROFILE_LOCATION && reloadProfile"
+alias toBash="chsh -s /bin/bash && export PROFILE_LOCATION=$BASH_PROFILE_LOCATION"
+
+# cron
+alias editCron='export EDITOR=nano && export VISUAL=nano && sudo crontab -u isaacperry -e && export EDITOR=code && export VISUAL=code'
+alias listCron='crontab -l'
+
+
+function cheatsheet {
+    echo "Useful Commands:"
+    echo "- Show contents of current path"
+    echo "ls"
+    echo ""
+    echo "- Show hidden files too"
+    echo "ls -a"
+    echo ""
+    echo "- Show file sizes and permissions"
+    echo "ls -l"
+    echo ""
+    echo "- open a file in the current path"
+    echo "open foo.txt"
+    echo ""
+    echo "- print file contents in terminal window"
+    echo "cat foo.txt"
+    echo ""
+    echo "- Open finder window at current path:"
+    echo "open ."
+    echo ""
+    echo "- navigate to a relative subdirectory "
+    echo "cd someFolder"
+    echo ""
+    echo "- navigate up a level"
+    echo "cd ../"
+    echo ""
+    echo "- navigate home"
+    echo "cd ~"
+    echo ""
+    echo "- navigate to a home subdirectory"
+    echo "cd ~/Downloads"
+    echo ""
+    echo "- navigate to root directory"
+    echo "cd /"
+    echo ""
+    echo "- navigate to root subdirectory"
+    echo "cd /opt/homebrew"
+    echo ""
+    echo "- navigate to a relative path"
+    echo "cd ProjectName/src/java/application"
+    echo ""
+    echo "- navigate to an absolute path (equivalent commands)"
+    echo "cd /Users/me/Desktop/ProjectName/src/java/application"
+    echo "cd ~/Desktop/ProjectName/src/java/application"
+    echo ""
+    echo "- create a subdirectory at the current path"
+    echo "mkdir ProjectName"
+    echo ""
+    echo "- create a subdirectory at an absolute path"
+    echo "mkdir ~/Desktop/screenshots"
+    echo ""
+    echo "- create a file if it doesn't already exist (or often more usefully, ensure an expected file exists by creating one wwith this name if it doesn't)"
+    echo "touch script-output.txt"
+    echo ""
+    echo "- delete a file (Be Careful!)"
+    echo "rm ~/Downloads/installer.dmg"
+    echo ""
+    echo "- Chain two commands - the first completing before the second begins"
+    echo "mkdir ProjectName && cd ProjectName"
+    echo "mkdir ProjectName/test && touch ProjectName/test/run-tests.sh && open ProjectName/test/run-tests.sh"
+    echo ""
+    echo "- add executable permission to a file"
+    echo "chmod +x foo.sh"
+    echo ""
+    echo "- add read and write permissions to a file"
+    echo "chmod +rw foo.jar"
+    echo ""
+    echo "- print a simple string"
+    echo "echo HelloWorld"
+    echo ""
+    echo "- help with the shell"
+    echo "help"
+    echo ""
+    echo "- the manual for a binary program"
+    echo "man git"
+    echo ""
+    echo "- Command Version Common Option 1:"
+    echo "java -version"
+    echo ""
+    echo "- Command Version Common Option 2:"
+    echo "bash --version"
+    echo ""
+    echo "- Command Location:"
+    echo "which bash"
+    echo ""
+    echo "- Homebrew Locations:"
+    echo "brew --prefix bash"
+    echo ""
+    echo "- search for a string within a filename "
+    echo "grep Exception /tmp/service-log.txt"
+    echo ""
+    echo "- Search case insensitive"
+    echo "grep -i error build/log.txt"
+    echo ""
+    echo "- display non-matching lines from search"
+    echo "grep -v ExpectedLoggerName /etc/runtime/log1.txt"
+    echo ""
+    echo "- search for all matching lines from all files within a sub directory and all nested subdirectories (recursive search)"
+    echo "grep -r functionName ~/Projects/ProjectName/src/java/somePackage"
+    echo ""
+    echo "- recursive search for all lines within the current path and all nested subdirectories"
+    echo "grep -r functionName ."
+    echo ""
+    echo "- Search multiple terms"
+    echo 'grep -E -i "error|failure" build/build.log'
+    echo ""
+    echo "- count occurances within search"
+    echo 'grep -i -c "Build Completed" build/build.log'
+    echo ""
+    echo "- print strings with spaces"
+    echo 'echo "Hello World"'
+    echo ""
+    echo "- Make A Script"
+    echo "touch temp.sh"
+    echo ""
+    echo "- Give it executable permissions"
+    echo "chmod +x temp.sh"
+    echo ""
+    echo "- edit the script"
+    echo "open temp.sh"
+    echo ""
+    echo "- add the following lines"
+    echo "#!/bin/bash"
+    echo 'echo "hello world"'
+    echo ""
+    echo "Run the script:"
+    echo "./temp.sh"
+    echo ""
+    echo "<DANGER ZONE>"
+    echo ""
+    echo "- Run a command with elevated privilages"
+    echo "sudo chmod +r /library/private/keys.txt"
+    echo ""
+    echo "- delete a directory and all nested subdirectories (recursive delete)"
+    echo "rm -rf ~/Downloads/SampleProject"
+    echo ""
+    echo "- delete a the contents of this directory and all nested subdirectories (recursive delete)"
+    echo "cd ~/Downloads && rm -rf ."
+    echo ""
+    echo "ToDo"
+    echo "- tail"
+    echo "- pipe |"
+    echo "- print to file >"
+    echo "- append file >>"
+    echo "- echo"
+    echo "- scripting"
+    echo "- variables"
+    echo "- capture output of command $()"
+    echo "- eval()"
+    echo "- data structures"
+    echo "- control flow (loops )"
+    echo "- file io"
+    echo ""
+}

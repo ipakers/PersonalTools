@@ -1,0 +1,160 @@
+Useful Commands:
+- Show contents of current path
+ls
+
+- Show hidden files too
+ls -a
+
+- Show file sizes and permissions
+ls -l
+
+- open a file in the current path
+open foo.txt
+
+- print file contents in terminal window
+cat foo.txt
+
+- Open finder window at current path:
+open .
+
+- navigate to a relative subdirectory 
+cd someFolder
+
+- navigate up a level
+cd ..
+
+- navigate up three levels
+cd ../../../
+
+- navigate home
+cd ~
+
+- navigate to a home subdirectory
+cd ~/Downloads
+
+- navigate to root directory
+cd /
+
+- navigate to root subdirectory
+cd /opt/homebrew
+
+- navigate to a relative path
+cd ProjectName/src/java/application
+
+- navigate to an absolute path (equivalent commands)
+cd /Users/me/Desktop/ProjectName/src/java/application
+cd ~/Desktop/ProjectName/src/java/application
+
+- create a subdirectory at the current path
+mkdir ProjectName
+
+- create a subdirectory at an absolute path
+mkdir ~/Desktop/screenshots
+
+- create a file if it doesn't already exist (or often more usefully, ensure an expected file exists by creating one wwith this name if it doesn't)
+touch script-output.txt
+
+- delete a file (Be Careful!)
+rm ~/Downloads/installer.dmg
+
+- Chain two commands - the first completing before the second begins
+mkdir ProjectName && cd ProjectName
+mkdir ProjectName/test && touch ProjectName/test/run-tests.sh && open ProjectName/test/run-tests.sh
+
+- add executable permission to a file
+chmod +x foo.sh
+
+- add read and write permissions to a file
+chmod +rw foo.jar
+
+- print a simple string
+echo HelloWorld
+
+- help with the shell
+help
+
+- the manual for a binary program
+man git
+
+- Command Version Common Option 1:
+java -version
+
+- Command Version Common Option 2:
+bash --version
+
+- Command Location:
+which bash
+
+- Homebrew Locations:
+brew --prefix bash
+
+- search for a string within a filename 
+grep Exception /tmp/service-log.txt
+
+- Search case insensitive
+grep -i error build/log.txt
+
+- display non-matching lines from search
+grep -v ExpectedLoggerName /etc/runtime/log1.txt
+
+- search for all matching lines from all files within a sub directory and all nested subdirectories (recursive search)
+grep -r functionName ~/Projects/ProjectName/src/java/somePackage
+
+- recursive search for all lines within the current path and all nested subdirectories
+grep -r functionName .
+
+- Search multiple terms
+grep -E -i "error|failure" build/build.log
+
+- count occurances within search
+grep -i -c "Build Completed" build/build.log
+
+- print strings with spaces
+echo "Hello World"
+
+- Make A Script
+touch temp.sh
+
+- Give it executable permissions
+chmod +x temp.sh
+
+- edit the script
+open temp.sh
+
+- add the following lines
+#!/bin/bash
+echo "hello world"
+
+Run the script:
+./temp.sh
+
+<DANGER ZONE>
+
+- Run a command with elevated privilages
+sudo chmod +r /library/private/keys.txt
+
+- delete a directory and all nested subdirectories (recursive delete)
+rm -rf ~/Downloads/SampleProject
+
+- delete a the contents of this directory and all nested subdirectories (recursive delete)
+cd ~/Downloads && rm -rf .
+
+ToDo
+- tail
+- pipe |
+- print to file >
+- append file >>
+- echo
+- scripting
+- variables
+- capture output of command $() => curDir=$(echo $PWD)  
+- eval()
+- data structures
+- control flow (loops, if\else)
+- file io
+- keyboard shortCuts
+- working out of scratch
+- when ever you look something up, save it as an alias or add it to your cheatsheet.
+- background a command -> (command &xx) grep error . >> out.txt &
+
+
