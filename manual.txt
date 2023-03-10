@@ -23,6 +23,3 @@ Menu Bar
 Browser
 - 1password chrome extension
 - Bookmarks
-
-
-

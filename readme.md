@@ -14,3 +14,10 @@ git clone https://github.com/ipakers/PersonalTools
 
 ./configure.sh
 
+4. You may need to change the brew location. By default it is...
+
+/opt/homebrew/brew
+
+but you may need to change it to...
+
+/usr/local/bin/brew
