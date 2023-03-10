@@ -5,6 +5,7 @@ cd $location
 function installBrew() {
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.bash_profile 
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile 
     eval "$(/opt/homebrew/bin/brew shellenv)"
 }
 
@@ -113,7 +114,6 @@ function printBashInstructions() {
 function performSetup() {
     installBrewWithVisuals $1
     installVSCodeWithVisuals $1
-    installBashWithVisuals $1
     generateProfilesWithVisuals $1
 
     printVSCodeInstructions

@@ -57,6 +57,19 @@ function downloadJava11() {
         /Library/Java/JavaVirtualMachines/openjdk-11.jdk
 }
 
+function installBrew() {
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.bash_profile 
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+}
+
+function installBash() {
+    brew install bash
+    echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.bash_profile && reset
+    sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells' && reset
+    chsh -s /usr/local/bin/bash && reset
+}
+
 function install1Password() {
     brew install --cask 1password
 }
@@ -85,12 +98,29 @@ function installXCodeTools() {
     xcode-select --install
 }
 
+function installZoom() {
+    brew install --cask zoom
+}
+
+function installVSCode () {
+    brew install --cask visual-studio-code
+}
+
+function installChrome () {
+    brew install --cask google-chrome
+}
+
+function installFirefox () {
+    brew install --cask firefox
+}
+
 function installPreferredApplications() {
     install1Password
     installCaffiene
     installPomatez
     installiStatMenus
     installTeams
+    installZoom
 }
 
 # Shell Implementations
