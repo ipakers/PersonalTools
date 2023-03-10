@@ -74,7 +74,7 @@ function install1Password() {
     brew install --cask 1password
 }
 
-function installCaffiene() {
+function installCaffeiene() {
     brew install --cask caffiene
 }
 

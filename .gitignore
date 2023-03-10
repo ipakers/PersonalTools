@@ -2,5 +2,7 @@
 /shell-profile-tool/profilecomponents/local-profile
 /shell-profile-tool/shell-profile-backups/bash/
 /shell-profile-tool/shell-profile-backups/zsh/
+zprofile_*
+bash_profile_*
 
 **/.DS_Store
