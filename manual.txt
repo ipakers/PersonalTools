@@ -1,5 +1,6 @@
 Set Up Tasks:
 
+Settings
 - settings > Darkmode
 - settings > Lock Screen > Turn Display Off... > Never
 - settings > touchid
@@ -8,5 +9,20 @@ Set Up Tasks:
 - settings > accounts > Login Ietems
 - settings > Mouse + Trackpad > tracking speed
 
-- pin to dock => Terminal, Activity Monitor, Settings
+Dock:
+- pin to dock => Terminal, Activity Monitor, Settings, Notes, 
 - add dock spacers
+
+Finder
+- pin Home and MacintoshHD to favorites
+
+Menu Bar
+- set istat menus
+- eliminte unncessary items
+
+Browser
+- 1password chrome extension
+- Bookmarks
+
+
+
