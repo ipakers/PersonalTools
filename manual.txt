@@ -1,0 +1,9 @@
+Set Up Tasks:
+
+- settings > Darkmode
+- settings > Lock Screen > Turn Display Off... > Never
+- settings > touchid
+- settings > dock > Position on Screen > Left
+- settings > accounts > Login Ietems
+- settings > Mouse + Trackpad > tracking speed
+- add dock spacers

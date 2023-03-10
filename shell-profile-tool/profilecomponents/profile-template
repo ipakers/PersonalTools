@@ -23,6 +23,10 @@ alias scratchScript='touch  ~/Tools/scratch.sh && open ~/Tools/scratch.sh'
 alias getPath='echo "$PATH"'
 alias getLocation='echo "$PWD"'
 
+function addDockSpacer () {
+    defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}'; killall Dock
+}
+
 function sortUnique() {
     sort -u $1
 }
@@ -53,11 +57,40 @@ function downloadJava11() {
         /Library/Java/JavaVirtualMachines/openjdk-11.jdk
 }
 
-function configureCodeAsDefault() {
-    cd ~/Library/Preferences/com.apple.LaunchServices
-    appIdentifier=$(/usr/libexec/PlistBuddy -c 'Print CFBundleIdentifier' /Applications/Visual\ Studio\ Code.app/Contents/Info.plist)
-    # open com.apple.launchservices.secure.plist < with xcode
-    #LSHanderRoleAll=$appidentifier.
+function install1Password() {
+    brew install --cask 1password
+}
+
+function installCaffiene() {
+    brew install --cask caffiene
+}
+
+function installPomatez() {
+    brew install --cask pomatez
+}
+
+function installiStatMenus() {
+    brew install --cask istat-menus
+}
+
+function installTeams() {
+    brew install --cask microsoft-teams
+}
+
+function installVisualStudio() {
+    brew install --cask visual-studio
+}
+
+function installXCodeTools() {
+    xcode-select --install
+}
+
+function installPreferredApplications() {
+    install1Password
+    installCaffiene
+    installPomatez
+    installiStatMenus
+    installTeams
 }
 
 # Shell Implementations
