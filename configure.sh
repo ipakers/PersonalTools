@@ -123,7 +123,7 @@ function performSetup() {
 function main() {
     context=MAIN
     # runs test by default. comment out below line to run main
-    context=TEST
+    # context=TEST
     performSetup $context
 }
 main
