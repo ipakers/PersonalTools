@@ -21,6 +21,11 @@ function installBash() {
 
 function makeProfiles() {
     cd $location
+    mkdir shell-profile-tool/shell-profile-backups/
+    mkdir shell-profile-tool/shell-profile-backups/bash
+    mkdir shell-profile-tool/shell-profile-backups/zsh
+    touch shell-profile-tool/profilecomponents/local-profile
+
     ./shell-profile-tool/generateProfiles.sh
 }
 

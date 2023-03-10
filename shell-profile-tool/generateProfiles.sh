@@ -1,9 +1,11 @@
 function backupProfiles() {
+    touch ~/.zprofile
     zshTally=$(cd ~/Tools/shell-profile-tool/shell-profile-backups/zsh && find . -name 'zshrc*' | grep -c zshrc)
     cd ~/Tools/shell-profile-tool/shell-profile-backups/zsh/
     zprofileBackupFile="zprofile_$zshTally.txt"
     mv ~/.zprofile $zprofileBackupFile
 
+    touch ~/.bash_profile
     bashTally=$(cd ~/Tools/shell-profile-tool/shell-profile-backups/bash && find . -name 'bash*' | grep -c bash)
     cd ~/Tools/shell-profile-tool/shell-profile-backups/bash/
     bashBackupFile="bash_profile_$bashTally.txt"
