@@ -4,7 +4,8 @@ export ZSH_PROFILE_LOCATION=~/.zshrc
 export LOCAL_PROFILE_LOCATION=~/Tools/shell-profile-tool/profilecomponents/
 
 # load brew
-eval "$(/opt/homebrew/bin/brew shellenv)"
+export BREW_LOCATION=/usr/local/bin
+eval "$($BREW_LOCATION/brew shellenv)"
 
 # set text editor - vscode
 export EDITOR=code
